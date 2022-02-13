@@ -24,7 +24,10 @@
   <button @click="addItem">Add</button>
 
   <ul>
-    <transition-group name="fade">
+    <transition-group name="fade"
+      enter-active-class="animate__animated animate__flipInX"
+      leave-active-class="animate__animated animate__flipOutX"
+    >
       <li v-for="(number, index) in numbers" :key="number" @click="removeItem(index)">
         {{ number }}
       </li>
@@ -98,6 +101,14 @@ export default {
   li {
     font-size: 22px;
     cursor: pointer;
+  }
+
+  .animate__flipOutX {
+    position: absolute;
+  }
+
+  .animate__animated {
+    animation-duration: 1.5s;
   }
 
   .fade-enter-from {
