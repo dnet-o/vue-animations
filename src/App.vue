@@ -1,8 +1,9 @@
 <template>
   <button @click="changeFlag">Toggle</button>
 
-  <transition name="fade">
-    <h2 v-if="flag">Hello, World</h2>
+  <transition name="fade" mode="out-in">
+    <h2 v-if="flag" key="main">Hello, World</h2>
+    <h2 v-else key="secondary">Hello, Vue</h2>
   </transition>
 </template>
 
