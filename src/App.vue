@@ -113,6 +113,14 @@ export default {
     opacity: 0;
   }
 
+  .fade-leave-active {
+    position: absolute;
+  }
+
+  .fade-move {
+    transition: all 1s linear;
+  }
+
   .zoom-enter-active {
     animation: zoom-in 1s linear forwards;
     transition: all 1s linear;
