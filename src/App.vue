@@ -10,7 +10,7 @@
     <h2 v-show="flag">Hello</h2>
   </transition> -->
 
-  <transition appear :css="true" name="fade"
+  <!-- <transition appear :css="true" name="fade"
     @before-enter="beforeEnter"
     @enter="enter"
     @after-enter="afterEnter"
@@ -19,7 +19,18 @@
     @after-leave="afterLeave"
   >
     <h2 v-show="flag">Hey! JS!</h2>
-  </transition>
+  </transition> -->
+
+  <button @click="addItem">Add</button>
+
+  <ul>
+    <transition-group name="fade">
+      <li v-for="(number, index) in numbers" :key="number" @click="removeItem(index)">
+        {{ number }}
+      </li>
+    </transition-group>
+  </ul>
+
 </template>
 <script>
 
@@ -28,9 +39,18 @@ export default {
   data() {
     return {
       flag: true,
+      numbers: [1, 2, 3, 4, 5]
     }
   },
   methods: {
+    addItem() {
+      const num = Math.floor(Math.random() * 100 + 1)
+      const index = Math.floor(Math.random() * this.numbers.length)
+      this.numbers.splice(index, 0, num)
+    },
+    removeItem(index) {
+      this.numbers.splice(index, 1)
+    },
     changeFlag() {
       this.flag = !this.flag;
     },
@@ -74,6 +94,12 @@ export default {
     padding: 20px;
     margin: 20px;
   }
+
+  li {
+    font-size: 22px;
+    cursor: pointer;
+  }
+
   .fade-enter-from {
     opacity: 0;
   }
