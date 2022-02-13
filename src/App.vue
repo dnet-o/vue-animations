@@ -1,0 +1,10 @@
+<template>
+  Animations
+</template>
+
+<script>
+
+export default {
+  name: 'App',
+};
+</script>
